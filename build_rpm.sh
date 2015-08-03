@@ -1,7 +1,6 @@
 #!/bin/bash
 set -e
 
-VER=1.0
 RPMBUILD_DIR=$(rpm --eval %{_topdir})
 
 if ! command rpmdev-setuptree ; then
@@ -13,9 +12,10 @@ fi
 rpmdev-setuptree
 
 pushd "$(dirname $0)" > /dev/null
+VER=$(cat VER)
 mv sty-etc sty-etc-"${VER}"
 tar  -pczf sty-etc-"${VER}".tar.gz sty-etc-"${VER}"
-sed -e "s|Version:        1.0|Version:        ${VER}|" sty-etc.spec
+sed -i "s|Version.*|Version:        ${VER}|" sty-etc.spec
 
 RPM_DIR="${PWD}"
 popd > /dev/null
