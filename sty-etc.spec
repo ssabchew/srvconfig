@@ -10,8 +10,9 @@ Summary:        SS custom aliases, colorful tty, crons and config scripts
 
 Group:          System Environment/Shells
 License:        GPL
-URL:            Source0:       https://github.com/ssabchew/srvconfig/archive/%{commit}/%{name}-%{version}-%{shortcommit}.tar.gz
+URL:            https://github.com/ssabchew/srvconfig/
 Source0:        %{name}-%{version}.tar.gz
+
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
 
