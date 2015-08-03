@@ -13,5 +13,5 @@ rpmdev-setuptree
 bash build_rpm.sh
 # Read where the output rpm file is written and use yum to install the package for your arch.
 # example install:
-sudo yum install ~/rpmbuild/RPMS/x86_64/mmserver-1.4.0-0.SS.fc19.x86_64.rpm 
+sudo yum install ~/rpmbuild/RPMS/x86_64/sty-etc-1.0.1-0.SS.fc22.x86_64.rpm
 ```
