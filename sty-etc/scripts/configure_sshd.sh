@@ -1,16 +1,19 @@
 #!/bin/bash
 set -e
 
-if ! command -v puppet &>/dev/null ;then
-    yum -y install puppet &>/dev/null
+if ! command -v augtool &>/dev/null ;then
+    apt-get -y install augeas &>/dev/null || zypper -n install augeas &>/dev/null || yum -y install augeas &>/dev/null
 fi
 
-# configure SSH client
-#sed -i  's|GSSAPIAuthentication.*|GSSAPIAuthentication no|' /etc/ssh/ssh_config
+augtool <<EOF
 
-# configure SSH server
-mypp=$(find /etc -type f -iname sshd_config.pp)
-puppet apply ${mypp}
+set /files/etc/ssh/sshd_config/PasswordAuthentication no
+set /files/etc/ssh/sshd_config/GSSAPIAuthentication no
+set /files/etc/ssh/sshd_config/UseDNS no
+set /files/etc/ssh/ssh_config/Host[.='*']/GSSAPIAuthentication no
+save
+
+EOF
 
 # restert ssh daemon
-service sshd restart
+[ "$?" -eq 0 ] && service sshd restart
