@@ -12,7 +12,7 @@ fi
 rpmdev-setuptree
 
 pushd "$(dirname $0)" > /dev/null
-VER=$(cat VER)
+VER=$(cat VERSION)
 mv sty-etc sty-etc-"${VER}"
 tar  -pczf sty-etc-"${VER}".tar.gz sty-etc-"${VER}"
 sed -i "s|Version.*|Version:        ${VER}|" sty-etc.spec
