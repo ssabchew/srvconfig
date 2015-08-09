@@ -10,6 +10,7 @@ augtool <<EOF
 set /files/etc/ssh/sshd_config/PasswordAuthentication no
 set /files/etc/ssh/sshd_config/GSSAPIAuthentication no
 set /files/etc/ssh/sshd_config/UseDNS no
+set /files/etc/ssh/sshd_config/ChallengeResponseAuthentication no
 set /files/etc/ssh/ssh_config/Host[.='*']/GSSAPIAuthentication no
 save
 

@@ -4,9 +4,11 @@ set -e
 if ! command -v screen &>/dev/null ;then
     yum -y install screen &>/dev/null
 else
-    [ -f /etc/screenrc.dist ] && echo -e "already configured...exiting\nyou can manually copy file \
+    if [ -f /etc/screenrc.dist ] ;then
+        echo -e "already configured...exiting\nyou can manually copy file \
     $(find /etc -type f -iname screenrc.cfg) to /etc/screenrc"
-exit 1
+        exit 1
+    fi
 fi
 
 # configure SCREEN
